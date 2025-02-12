@@ -1,5 +1,27 @@
 # Implement JWT Auth in 5 minutes
 
+## Quick Start
+
+### Backend Setup
+```bash
+cd backend
+npm install
+npm start
+```
+
+### Frontend Setup
+```bash
+cd frontend
+npm install
+npm start
+```
+
+The backend will run on http://localhost:3000 and the frontend dev server will start in development mode. Follow the Expo instructions in the terminal to run on your preferred platform (web, iOS, or Android).
+
+Default credentials:
+- Username: user
+- Password: password
+
 Below is a step‐by‐step, on how to use JWTs for auth between a backend API and a React frontend. This example will help you understand:
 
 - **How a JWT is created and signed on the backend.**
