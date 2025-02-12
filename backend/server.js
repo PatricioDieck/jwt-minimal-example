@@ -52,7 +52,7 @@ const authenticateToken = (req, res, next) => {
 // Protected endpoint: Only accessible with a valid JWT
 app.get('/protected', authenticateToken, (req, res) => {
     console.log('protected endpoint reached and authenticated', req.user);
-    res.json({ message: `Hello ${req.user.username}, this is protected data!` });
+    res.json({ message: `Hello ${req.user.username}, this is protected data! \n \n token: ${req.headers.authorization.split(' ')[1]}` });
 });
 
 app.listen(PORT, () => {
