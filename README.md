@@ -1,5 +1,7 @@
 # Implement JWT Auth in 5 minutes
 
+---
+
 ## Quick Start
 
 ### Backend Setup
@@ -21,6 +23,8 @@ The backend will run on http://localhost:3000 and the frontend dev server will s
 Default credentials:
 - Username: user
 - Password: password
+
+---
 
 Below is a step‐by‐step, on how to use JWTs for auth between a backend API and a React frontend. This example will help you understand:
 
