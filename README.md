@@ -1,6 +1,6 @@
-# learn authentication in 5 minutes
+# Implement JWT Auth in 5 minutes
 
-Below is a step‐by‐step, minimal viable example that demonstrates how to use JWTs for authentication between a backend API and a React frontend. This example will help you understand:
+Below is a step‐by‐step, on how to use JWTs for auth between a backend API and a React frontend. This example will help you understand:
 
 - **How a JWT is created and signed on the backend.**
 - **How the JWT is returned to the client upon login.**
