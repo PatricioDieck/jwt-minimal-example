@@ -4,13 +4,13 @@ Below is a step‐by‐step, minimal viable example that demonstrates how to use
 - **How the JWT is returned to the client upon login.**
 - **How the client stores and then uses the JWT to access a protected API endpoint.**
 
-> **Note:** In this example we’ll use a simple Node.js/Express server for the backend and a plain Expo app for the frontend. In production you would secure your JWT secret, handle errors more gracefully, and likely use libraries for secure storage.
+> **Note:** In this example we'll use a simple Node.js/Express server for the backend and a plain Expo app for the frontend. In production you would secure your JWT secret, handle errors more gracefully, and likely use libraries for secure storage.
 
 ---
 
 ## 1. Project Structure
 
-For clarity, here’s a simplified folder structure:
+For clarity, here's a simplified folder structure:
 
 ```
 jwt-minimal-example/
@@ -117,23 +117,38 @@ Your server should now be listening on port 3000.
 
 ---
 
-## 3. Frontend: Expo/React Native App
+## 3. Frontend: Expo App
 
-### **3.1. Overview**
+### **3.1. Creating a New Expo Project**
 
-In the frontend, we will:
+1. Create a new Expo project in your `frontend` folder:
+```bash
+npx create-expo-app@latest frontend
+cd frontend
+```
 
-- Create a simple login screen.
-- Send a login request to the backend.
-- Store the received JWT in component state (for a real app, consider using secure storage).
-- Use the token to call a protected endpoint.
+2. Install the required dependencies:
+```bash
+npx expo install @expo/vector-icons expo-router react-native-safe-area-context react-native-screens expo-linking expo-constants expo-status-bar react-native-gesture-handler
+```
 
-### **3.2. Code: `App.js`**
+3. Configure for TypeScript (optional but recommended):
+```bash
+npx expo customize tsconfig.json
+```
 
-Create or replace the `App.js` file in your `frontend` folder with the following:
+4. Update your `package.json` to use expo-router:
+```json
+{
+  "main": "expo-router/entry"
+}
+```
 
-```jsx
-// frontend/App.js
+5. Create an `app` directory in your project root and add an `index.tsx` (or `index.js`) file - this will be your main screen.
+
+### **3.2. Code: `app/index.tsx`**
+
+```tsx
 import React, { useState } from 'react';
 import { SafeAreaView, View, TextInput, Button, Text, StyleSheet } from 'react-native';
 
@@ -244,18 +259,22 @@ const styles = StyleSheet.create({
 
 ### **3.3. Running the Frontend**
 
-1. Make sure you have the Expo CLI installed (if not, install it via `npm install -g expo-cli`).
-2. In your `frontend` folder, run:
-
+1. Start your Expo development server:
    ```bash
-   expo start
+   npx expo start
    ```
 
-3. Use an emulator or your mobile device (with the Expo Go app) to view the app.
+2. Use your preferred method to run the app:
+   - Press `i` for iOS simulator
+   - Press `a` for Android emulator
+   - Scan the QR code with your phone's camera (iOS) or Expo Go app (Android)
 
 > **Important:**  
-> - **Networking:** When testing on a real device, ensure that your backend (running on `localhost:3000`) is accessible to your mobile device. You might need to use your machine’s IP address instead of `localhost`.
-> - **Storage:** For simplicity, the JWT is stored in component state here. In a production Expo app, consider using [`expo-secure-store`](https://docs.expo.dev/versions/latest/sdk/securestore/) for more secure persistence.
+> - **Networking:** When testing on a real device or simulator, you'll need to update the fetch URLs in the code to point to your machine's local IP address instead of `localhost`. For example: `http://192.168.1.100:3000/login`
+> - **Storage:** For simplicity, the JWT is stored in component state here. In a production Expo app, use [`expo-secure-store`](https://docs.expo.dev/versions/latest/sdk/securestore/) for secure token storage:
+>   ```bash
+>   npx expo install expo-secure-store
+>   ```
 
 ---
 
@@ -292,4 +311,4 @@ const styles = StyleSheet.create({
 - **Error Handling & Refresh:**  
   Add better error handling and explore implementing a token refresh strategy.
 
-By building and testing this minimal example, you’ll gain a practical understanding of how JWT-based authentication works end-to-end. Once you’re comfortable with this flow, you can begin integrating similar concepts into your Expo/React Native app with your preferred backend (and eventually, Clerk for more advanced features).
+By building and testing this minimal example, you'll gain a practical understanding of how JWT-based authentication works end-to-end. Once you're comfortable with this flow, you can begin integrating similar concepts into your Expo/React Native app with your preferred backend (and eventually, Clerk for more advanced features).
